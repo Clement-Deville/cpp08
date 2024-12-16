@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 17:12:07 by cdeville          #+#    #+#             */
-/*   Updated: 2024/12/02 17:04:26 by cdeville         ###   ########.fr       */
+/*   Created: 2024/12/16 16:08:59 by cdeville          #+#    #+#             */
+/*   Updated: 2024/12/16 16:55:35 by cdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRAY_HPP
-#define ARRAY_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
-# include <iostream>
 # include <string>
+# include <iostream>
 
-template<typename T>
-class Array
-{
-private:
-	T	*_my_array;
-	unsigned int _size;
-public:
-	Array();
-	Array(const Array &Cpy);
-	Array(unsigned int N);
+template	<typename T>
+int	*easyfind(T container, int nb_to_find);
 
-	virtual ~Array();
-
-	Array &operator=(const Array &Cpy);
-	T &operator[](const std::size_t idx);
-	unsigned int size(void) const;
-	T *get_array(void) const;
-};
-
-# include "Array.tpp"
-
-#endif
+#include "easyfind.tpp"
+#endif /* !EASYFIND_HPP */

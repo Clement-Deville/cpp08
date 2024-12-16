@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/12 16:23:30 by peanut            #+#    #+#              #
-#    Updated: 2024/12/02 17:05:32 by cdeville         ###   ########.fr        #
+#    Created: 2024/07/12 16:23:30 by cdeville          #+#    #+#              #
+#    Updated: 2024/12/16 16:55:54 by cdeville         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=arrays
+NAME=easyfind
 
 CC=c++
 
