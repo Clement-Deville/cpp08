@@ -6,7 +6,7 @@
 #    By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 16:23:30 by cdeville          #+#    #+#              #
-#    Updated: 2024/12/16 16:55:54 by cdeville         ###   ########.fr        #
+#    Updated: 2025/05/01 16:48:01 by cdeville         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,16 +42,16 @@ $(OBJ_DIR)%.o : $(SRC_DIR)%.cpp
 	$(CC) $(CFLAGS) $(DEBUG) -c $< -o $@
 
 $(NAME): $(OBJS)
-	@echo "\e[0;32m\nLinking executable:\n\e[0m"
+	@echo -e "\e[0;32m\nLinking executable:\n\e[0m"
 	$(CC) $(CFLAGS) $(OBJS) -o $@
-	@echo "\e[0;32m\nMandatory part compiled !\n\e[0m"
+	@echo -e "\e[0;32m\nMandatory part compiled !\n\e[0m"
 
 clean:
-	@echo "\e[0;31m\nDeleting objects\n\e[0m"
+	@echo -e "\e[0;31m\nDeleting objects\n\e[0m"
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo "\e[0;31m\nDeleting executable\n\e[0m"
+	@echo -e "\e[0;31m\nDeleting executable\n\e[0m"
 	rm -f $(NAME)
 	rm -rf $(OBJ_DIR)
 
