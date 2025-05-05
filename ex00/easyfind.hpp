@@ -15,9 +15,10 @@
 
 # include <string>
 # include <iostream>
+# include <iterator>
 
 template	<typename T>
-int	*easyfind(T container, int nb_to_find);
+typename T::const_iterator	easyfind(const T& container, const int &nb_to_find);
 
 #include "easyfind.tpp"
 #endif /* !EASYFIND_HPP */

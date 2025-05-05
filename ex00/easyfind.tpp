@@ -10,13 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-template	<typename T>
-int	*easyfind(T container, int nb_to_find)
+#ifndef EASYFIND_TPP
+# define EASYFIND_TPP
+
+template	<typename T> 
+typename T::const_iterator easyfind(const T& container, const int &nb_to_find)
 {
-	for (int i = 0; i < T.size(); i++)
+	for (typename T::const_iterator ite = container.begin(); ite != container.end(); ite++)
 	{
-		if (container[i] == nb_to_find)
-			return (&container[i]);
+		if (*ite == nb_to_find)
+			return (ite);
 	}
-	return (NULL);
+	throw std::out_of_range("Easyfind: No occurence find");
+	return container.end();
 }
+
+#endif /* !EASYFIND_HPP */

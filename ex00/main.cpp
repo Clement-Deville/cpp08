@@ -15,10 +15,18 @@
 
 int main( void )
 {
-	std::vector<int> test;
-	for (int i = 0; i < 10; i++)
-		test.push_back(i);
-
-	std::cout << easyfind(test, 8);
-
+	try
+	{
+		std::vector<int> test;
+		for (int i = 0; i < 10; i++)
+			test.push_back(i);
+	
+		std::cout << *easyfind(test, 8) << std::endl;
+		std::cout << *easyfind(test, 10) << std::endl;
+		std::cout << "TEST" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
