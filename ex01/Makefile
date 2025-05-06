@@ -6,11 +6,11 @@
 #    By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 16:23:30 by cdeville          #+#    #+#              #
-#    Updated: 2025/05/05 22:23:24 by cdeville         ###   ########.fr        #
+#    Updated: 2025/05/06 15:41:53 by cdeville         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=span
+NAME=Span
 
 CC=c++
 
@@ -21,6 +21,7 @@ DEBUG = -g
 SRC_DIR = ./
 
 SRC =	main.cpp \
+		Span.cpp
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 
