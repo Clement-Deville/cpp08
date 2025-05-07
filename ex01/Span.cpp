@@ -6,7 +6,7 @@
 /*   By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 13:38:54 by cdeville          #+#    #+#             */
-/*   Updated: 2025/05/07 12:22:01 by cdeville         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:33:36 by cdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,15 @@ unsigned int	Span::get_size(void) const
 }
 
 //* ADD A NUMBER TO THE CLASS CONTAINER
+//! CAN THROW AN ERROR IF THE FINAL SIZE OF THE CONTAINER IS BIGER THAN MAX_SIZE
 
 void    Span::addNumber(const int nb_to_add)
 {
-     if (_numbers_set.size() == this->_max_size)
+	unsigned int	actual_max_size;
+
+	actual_max_size = this->_max_size < this->_numbers_set.max_size() ?
+		this->_max_size : this->_numbers_set.max_size();
+     if (_numbers_set.size() == actual_max_size)
          throw std::out_of_range("Span: Out of capacity");
      this->_numbers_set.insert(nb_to_add);
 }
@@ -89,11 +94,14 @@ void    Span::addNumber(const int nb_to_add)
 //* USE A RANGE OF ITERATOR TO ADD NUMBERS TO THE CLASS CONTAINER
 //! CAN THROW AN ERROR IF THE FINAL SIZE OF THE CONTAINER IS BIGER THAN MAX_SIZE
 //* USING ABSOLUTE ON DISTANCE CAUSE IT COULD BE NEGATIVE
-
 void    Span::addRange(std::multiset<int>::const_iterator first,
             std::multiset<int>::const_iterator last)
 {
-    if (std::abs(std::distance(first, last)) + this->_numbers_set.size() == this->_max_size)
+	unsigned int	actual_max_size;
+
+	actual_max_size = this->_max_size < this->_numbers_set.max_size() ?
+		this->_max_size : this->_numbers_set.max_size();
+    if (std::abs(std::distance(first, last)) + this->_numbers_set.size() == actual_max_size)
         throw std::out_of_range("Span: Out of capacity");
     this->_numbers_set.insert(first, last);
 }
