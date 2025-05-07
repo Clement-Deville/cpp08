@@ -6,7 +6,7 @@
 /*   By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:23:43 by cdeville          #+#    #+#             */
-/*   Updated: 2025/05/07 13:55:51 by cdeville         ###   ########.fr       */
+/*   Updated: 2025/05/07 14:49:52 by cdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,28 @@ int main( void )
 			std::cout << "OKAY." << std::endl;
 
 			std::cout <<
+			"/**=======================\n"
+			"* Testing operator =\n"
+			"*========================**/" << std::endl;
+
+			std::vector<int> tank(4, 10);
+			Span	original(10);
+			Span	to_asign(2);
+
+			original.addRange(tank.begin(), tank.end());
+			try
+			{
+				std::cout << original << "\n" << to_asign << std::endl;
+				to_asign = original; //* THIS SHOULD THROW EXCEPTION
+			}
+			catch (const std::out_of_range &e)
+			{
+				std::cout << "===>> EXCEPTION CATCHED" << std::endl;
+				std::cout << e.what() << std::endl;
+				std::cout << "==== END ====" << std::endl;
+			}
+
+			std::cout <<
 			"/**========================================================================\n" <<
 			"*                           TESTING METHODS\n" <<
 			"*========================================================================**/" << std::endl;
@@ -121,7 +143,7 @@ int main( void )
 			"* Testing addRange\n"
 			"*========================**/" << std::endl;
 			std::vector<int>	small_v;
-			Span					small_span(2);
+			Span				small_span(2);
 
 			try {
 				small_v.push_back(-10);
@@ -140,9 +162,53 @@ int main( void )
 				std::cout << e.what() << std::endl;
 				std::cout << "==== END ====" << std::endl;
 			}
+			try {
+				std::cout << "Testing max_size exception:" << std::endl;
+				std::cout << "==> Small vector size is " << small_v.size() << std::endl;
+				std::cout << "==> Small span max size is " << small_span.get_max_size()
+					<< std::endl;
+				small_span.addRange(small_v.end(), small_v.begin());
+				std::cout << "===>> EXCEPTION IS NOT THROWED" << std::endl;
+				std::cout << "==== END ====" << std::endl;
+			}
+			catch (const std::exception &e) {
+				std::cout << "===>> EXCEPTION CATCHED" << std::endl;
+				std::cout << e.what() << std::endl;
+				std::cout << "==== END ====" << std::endl;
+			}
+
+			std::cout << "Testing exact size:" << std::endl;
+			Span three_span(3);
+			std::cout << "==> Small vector size is " << small_v.size() << std::endl;
+			std::cout << "==> Three span max size is " << three_span.get_max_size()
+				<< std::endl;
+			std::cout << "Before:\n" << three_span << std::endl;
+			three_span.addRange(small_v.begin(), small_v.end());
+			std::cout << "After:\n"<< three_span << std::endl;
+			std::cout << "==== END ====" << std::endl;
+
+			try
+			{
+				std::cout << "Testing wrong size cause container actual size plus the added numbers will be out of range:" << std::endl;
+				Span correct_span(5);
+
+				correct_span.addRange(small_v.begin(), small_v.end());
+				std::cout << "==> Small vector size is " << small_v.size() << std::endl;
+				std::cout << "==> Span actual state " << correct_span << std::endl;
+				correct_span.addRange(small_v.begin(), small_v.end());
+				std::cout << "===>> EXCEPTION IS NOT THROWED" << std::endl;
+				std::cout << "==== END ====" << std::endl;
+			}
+			catch (const std::exception& e)
+			{
+				std::cout << "===>> EXCEPTION CATCHED" << std::endl;
+				std::cout << e.what() << std::endl;
+				std::cout << "==== END ====" << std::endl;
+			}
+
 		}
 	}
-	catch(const std::exception& e)
+	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 		return (1);

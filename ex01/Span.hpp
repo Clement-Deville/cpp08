@@ -6,7 +6,7 @@
 /*   By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 22:25:01 by cdeville          #+#    #+#             */
-/*   Updated: 2025/05/07 13:57:23 by cdeville         ###   ########.fr       */
+/*   Updated: 2025/05/07 14:33:42 by cdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	Span::addRange(Iterator first, Iterator last)
 
 	actual_max_size = this->_max_size < this->_numbers_set.max_size() ?
 		this->_max_size : this->_numbers_set.max_size();
-    if (std::abs(std::distance(first, last)) + this->_numbers_set.size() >= actual_max_size)
+    if (std::abs(std::distance(first, last)) + this->_numbers_set.size() > actual_max_size)
         throw std::out_of_range("Span: Out of capacity");
     this->_numbers_set.insert(first, last);
 }
