@@ -6,7 +6,7 @@
 /*   By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 13:38:54 by cdeville          #+#    #+#             */
-/*   Updated: 2025/05/07 12:33:36 by cdeville         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:50:09 by cdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,16 @@ std::ostream & operator<<(std::ostream &out, const Span &B)
     return (out);
 }
 
+//! CAN THROW AN ERROR IF THE SIZE OF THE CONTAINER TO COPY IS BIGER THAN MAX_SIZE
+//! OF THE OBJECT
+
 Span & Span::operator=(const Span &Cpy)
 {
-    if (this == &Cpy)
-        return *this;
+	if (this == &Cpy)
+		return (*this);
+	if (Cpy.get_size() > this->get_max_size())
+		throw std::out_of_range("Span: Out of capacity");
+	this->_numbers_set = Cpy._numbers_set;
     return (*this);
 };
 
@@ -89,21 +95,6 @@ void    Span::addNumber(const int nb_to_add)
      if (_numbers_set.size() == actual_max_size)
          throw std::out_of_range("Span: Out of capacity");
      this->_numbers_set.insert(nb_to_add);
-}
-
-//* USE A RANGE OF ITERATOR TO ADD NUMBERS TO THE CLASS CONTAINER
-//! CAN THROW AN ERROR IF THE FINAL SIZE OF THE CONTAINER IS BIGER THAN MAX_SIZE
-//* USING ABSOLUTE ON DISTANCE CAUSE IT COULD BE NEGATIVE
-void    Span::addRange(std::multiset<int>::const_iterator first,
-            std::multiset<int>::const_iterator last)
-{
-	unsigned int	actual_max_size;
-
-	actual_max_size = this->_max_size < this->_numbers_set.max_size() ?
-		this->_max_size : this->_numbers_set.max_size();
-    if (std::abs(std::distance(first, last)) + this->_numbers_set.size() == actual_max_size)
-        throw std::out_of_range("Span: Out of capacity");
-    this->_numbers_set.insert(first, last);
 }
 
 //* GIVE THE SMALLEST DISTANCE BETWEEN TWO NUMBERS IN OUR CONTAINER

@@ -6,12 +6,13 @@
 /*   By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:23:43 by cdeville          #+#    #+#             */
-/*   Updated: 2025/05/07 12:22:45 by cdeville         ###   ########.fr       */
+/*   Updated: 2025/05/07 13:55:51 by cdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <limits.h>
+#include <vector>
 
 int main( void )
 {
@@ -110,6 +111,31 @@ int main( void )
 			}
 			catch (const std::out_of_range &e)
 			{
+				std::cout << "===>> EXCEPTION CATCHED" << std::endl;
+				std::cout << e.what() << std::endl;
+				std::cout << "==== END ====" << std::endl;
+			}
+
+			std::cout <<
+			"/**=======================\n"
+			"* Testing addRange\n"
+			"*========================**/" << std::endl;
+			std::vector<int>	small_v;
+			Span					small_span(2);
+
+			try {
+				small_v.push_back(-10);
+				small_v.push_back(100);
+				small_v.push_back(1000);
+				std::cout << "Testing max_size exception:" << std::endl;
+				std::cout << "==> Small vector size is " << small_v.size() << std::endl;
+				std::cout << "==> Small span max size is " << small_span.get_max_size()
+					<< std::endl;
+				small_span.addRange(small_v.begin(), small_v.end());
+				std::cout << "===>> EXCEPTION IS NOT THROWED" << std::endl;
+				std::cout << "==== END ====" << std::endl;
+			}
+			catch (const std::exception &e) {
 				std::cout << "===>> EXCEPTION CATCHED" << std::endl;
 				std::cout << e.what() << std::endl;
 				std::cout << "==== END ====" << std::endl;
