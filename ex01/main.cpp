@@ -6,7 +6,7 @@
 /*   By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:23:43 by cdeville          #+#    #+#             */
-/*   Updated: 2025/05/06 18:16:18 by cdeville         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:22:45 by cdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ int main( void )
 			"/**========================================================================\n" <<
 			"*                           TESTING CONSTRUCTORS\n" <<
 			"*========================================================================**/" << std::endl;
-			
-			std::cout << 
+
+			std::cout <<
 			"/**=================================\n"
 			"* Testing Default/Arg constructors\n"
 			"*=================================**/" << std::endl;
-			
+
 			Span empty;
+			std::cout << empty << std::endl;
 			Span little(10);
 			std::cout << little << std::endl;
 			Span big(10000);
@@ -39,24 +40,24 @@ int main( void )
 			std::cout << negative << std::endl;
 
 			std::cout << "OKAY." << std::endl;
-			
-			std::cout << 
+
+			std::cout <<
 			"/**=======================\n"
 			"* Testing Copy constructor\n"
 			"*========================**/" << std::endl;
-			
+
 			Span big_copy(big);
 			std::cout << "This should be the same:" << std::endl;
 			std::cout << big_copy << std::endl;
 			std::cout << big << std::endl;
 			std::cout << "==== END ====" << std::endl;
-			
+
 			Span const_copy(const_span);
 			std::cout << "This should be the same:" << std::endl;
 			std::cout << const_copy << std::endl;
 			std::cout << const_span << std::endl;
 			std::cout << "==== END ====" << std::endl;
-			
+
 			Span empty_copy(empty);
 			std::cout << "This should be the same:" << std::endl;
 			std::cout << empty_copy << std::endl;
@@ -64,13 +65,13 @@ int main( void )
 			std::cout << "==== END ====" << std::endl;
 
 			std::cout << "OKAY." << std::endl;
-			
+
 			std::cout <<
 			"/**========================================================================\n" <<
 			"*                           TESTING METHODS\n" <<
 			"*========================================================================**/" << std::endl;
-		
-			std::cout << 
+
+			std::cout <<
 			"/**=======================\n"
 			"* Testing addNumber\n"
 			"*========================**/" << std::endl;
@@ -78,17 +79,17 @@ int main( void )
 			little.addNumber(-1);
 			std::cout << little <<  std::endl;
 			std::cout << "==== END ====" << std::endl;
-			
+
 			std::cout << "Testing max int:" << std::endl;
 			little.addNumber(INT_MAX);
 			std::cout << little << std::endl;
 			std::cout << "==== END ====" << std::endl;
-		
+
 			std::cout << "Testing min int with max int to detect possible OVERFLOWS:" << std::endl;
 			little.addNumber(INT_MIN);
 			std::cout << little <<  std::endl;
 			std::cout << "==== END ====" << std::endl;
-			
+
 			std::cout << "Testing with negatives only:" << std::endl;
 			big.addNumber(-10);
 			big.addNumber(-100);
@@ -104,7 +105,7 @@ int main( void )
 				std::cout << very_small <<  std::endl;
 				very_small.addNumber(-100);
 				std::cout << very_small <<  std::endl;
-				std::cout << "===>> EXCEPTION IS NOT CATCHED" << std::endl;
+				std::cout << "===>> EXCEPTION IS NOT THROWED" << std::endl;
 				std::cout << "==== END ====" << std::endl;
 			}
 			catch (const std::out_of_range &e)
