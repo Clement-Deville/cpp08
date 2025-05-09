@@ -6,7 +6,7 @@
 /*   By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 22:25:01 by cdeville          #+#    #+#             */
-/*   Updated: 2025/05/07 14:33:42 by cdeville         ###   ########.fr       */
+/*   Updated: 2025/05/09 12:31:16 by cdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <set>
 #include <cstdlib>
-#include <vector>
 
 /*================== Class defintion =================*/
 

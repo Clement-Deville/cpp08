@@ -6,7 +6,7 @@
 /*   By: cdeville <cdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:23:43 by cdeville          #+#    #+#             */
-/*   Updated: 2025/05/07 14:49:52 by cdeville         ###   ########.fr       */
+/*   Updated: 2025/05/09 12:28:25 by cdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,6 @@ int main( void )
 				std::cout << e.what() << std::endl;
 				std::cout << "==== END ====" << std::endl;
 			}
-
 		}
 	}
 	catch (const std::exception& e)
